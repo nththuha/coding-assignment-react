@@ -34,11 +34,9 @@ export default function Tickets() {
 
   const handleAddTicket = useCallback(
     async (values: PushTicketForm) => {
-      setLoading(true);
       await createTicket(values.description);
-      await fetchData();
       modals.closeAll();
-      setLoading(false);
+      await fetchData();
       pushNotification({
         type: NotificationType.SUCCESS,
         message: "Ticket created successfully",

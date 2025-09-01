@@ -1,6 +1,7 @@
-import { Button, Stack, TextInput } from "@mantine/core";
+import { Box, Button, LoadingOverlay, Stack, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
+import { useState } from "react";
 import z from "zod";
 import { PushTicketForm } from "../configs";
 
@@ -9,6 +10,7 @@ type AddTicketFormProps = {
 };
 
 export default function AddTicketForm({ onSubmit }: AddTicketFormProps) {
+  const [loading, setLoading] = useState(false);
   const form = useForm<PushTicketForm>({
     initialValues: {
       description: "",
@@ -17,20 +19,34 @@ export default function AddTicketForm({ onSubmit }: AddTicketFormProps) {
     validate: zodResolver(schema),
   });
 
-  return (
-    <form onSubmit={form.onSubmit(onSubmit)}>
-      <Stack gap={25} w="100%">
-        <TextInput
-          label="Description"
-          withAsterisk
-          {...form.getInputProps("description")}
-        />
+  const submit = async (values: PushTicketForm) => {
+    setLoading(true);
+    onSubmit(values);
+    setLoading(false);
+  };
 
-        <Button mt={10} type="submit">
-          Create
-        </Button>
-      </Stack>
-    </form>
+  return (
+    <Box pos="relative">
+      <LoadingOverlay
+        visible={loading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+      />
+
+      <form onSubmit={form.onSubmit(submit)}>
+        <Stack gap={25} w="100%">
+          <TextInput
+            label="Description"
+            withAsterisk
+            {...form.getInputProps("description")}
+          />
+
+          <Button mt={10} type="submit">
+            Create
+          </Button>
+        </Stack>
+      </form>
+    </Box>
   );
 }
 

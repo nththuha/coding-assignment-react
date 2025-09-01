@@ -2,8 +2,8 @@ import { Button, Flex, Title as MantineTitle } from "@mantine/core";
 
 type TitleProps = {
   content: string;
-  buttonText?: string;
-  onButtonClick?: () => void;
+  buttonText: string;
+  onButtonClick: () => void;
 };
 
 export default function Title({
@@ -14,9 +14,7 @@ export default function Title({
   return (
     <Flex justify="space-between" align="center">
       <MantineTitle order={1}>{content}</MantineTitle>
-      {buttonText && onButtonClick && (
-        <Button onClick={onButtonClick}>{buttonText}</Button>
-      )}
+      <Button onClick={onButtonClick}>{buttonText}</Button>
     </Flex>
   );
 }

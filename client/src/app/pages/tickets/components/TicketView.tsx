@@ -1,8 +1,8 @@
-import Title from "@/components/Title";
 import Wrapper from "@/layout";
 import { Ticket } from "@acme/shared-models";
 import Filter from "./Filter";
 import TicketList from "./TicketList";
+import Title from "./Title";
 
 type TicketsViewProps = {
   tickets: Ticket[];
