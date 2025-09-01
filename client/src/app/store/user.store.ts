@@ -1,4 +1,4 @@
-import { fetchUsers } from "@/services/domain";
+import { getUsers } from "@/services/domain";
 import { User } from "@acme/shared-models";
 import { create } from "zustand";
 
@@ -24,7 +24,7 @@ export default create<UserStore>((set, get) => ({
         return;
       }
     }
-    const data = await fetchUsers();
+    const data = await getUsers();
     localStorage[USERS_KEY] = JSON.stringify(data);
     get().set(data || []);
   },

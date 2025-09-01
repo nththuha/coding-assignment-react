@@ -1,5 +1,5 @@
 import useMount from "@/hooks/useMount";
-import { fetchTickets } from "@/services/domain";
+import { getTickets } from "@/services/domain";
 import { Ticket } from "@acme/shared-models";
 import { useState } from "react";
 import TicketsView from "./components/TicketView";
@@ -12,7 +12,7 @@ export default function Tickets() {
 
   const fetchData = async () => {
     setLoading(true);
-    const data = await fetchTickets();
+    const data = await getTickets();
     setTickets(data || []);
     setLoading(false);
   };
