@@ -1,6 +1,7 @@
+import TicketBadges from "@/components/TicketBadges";
 import useUserStore from "@/store/user.store";
 import { Ticket } from "@acme/shared-models";
-import { Badge, Card, Flex, Stack, Text } from "@mantine/core";
+import { Card, Flex, Stack, Text } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import { IconUser } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
@@ -34,21 +35,7 @@ export default function TicketItem({ ticket }: TicketItemProps) {
       onClick={onClick}
     >
       <Stack gap={10}>
-        <Flex gap={10}>
-          <Badge variant="light" color="var(--index)">
-            #{ticket.id}
-          </Badge>
-          <Badge
-            variant="light"
-            color={
-              ticket.completed
-                ? "var(--completed-status)"
-                : "var(--incomplete-status)"
-            }
-          >
-            {ticket.completed ? "Completed" : "Incomplete"}
-          </Badge>
-        </Flex>
+        <TicketBadges ticket={ticket} />
 
         <Text fw="bold" fz={16} mt={4}>
           {ticket.description}
