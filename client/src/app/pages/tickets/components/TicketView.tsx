@@ -9,6 +9,7 @@ type TicketsViewProps = {
   loading: boolean;
   status: string | null;
   setStatus: (value: string | null) => void;
+  onAddTicketClick: () => void;
 };
 
 export default function TicketsView({
@@ -16,10 +17,15 @@ export default function TicketsView({
   loading,
   status,
   setStatus,
+  onAddTicketClick,
 }: TicketsViewProps) {
   return (
     <Wrapper>
-      <Title content="Tickets" />
+      <Title
+        content="Tickets"
+        buttonText="Add Ticket"
+        onButtonClick={onAddTicketClick}
+      />
       <Filter status={status} setStatus={setStatus} />
       <TicketList tickets={tickets} loading={loading} />
     </Wrapper>

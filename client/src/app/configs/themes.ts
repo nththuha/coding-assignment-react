@@ -28,6 +28,7 @@ export const resolver: CSSVariablesResolver = (theme) => ({
   variables: {
     "--success": "#3CA77A",
     "--error": "#D93E3E",
+    "--warning": "#FF9D00",
     "--completed-status": "#289f6d",
     "--incomplete-status": "#ff9d00",
     "--index": theme.colors["primary"][6],

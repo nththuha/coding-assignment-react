@@ -11,7 +11,7 @@ type TicketListProps = {
 export default function TicketList({ tickets, loading }: TicketListProps) {
   if (loading) {
     return (
-      <Center>
+      <Center z={9999}>
         <Loader mt={20} />
       </Center>
     );

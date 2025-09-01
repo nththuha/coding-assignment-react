@@ -1,21 +1,24 @@
+import { NotificationType, pushNotification } from "@/configs/notifications";
 import useMount from "@/hooks/useMount";
-import { getTickets } from "@/services/domain";
+import { createTicket, getTickets } from "@/services/domain";
 import { Ticket } from "@acme/shared-models";
-import { useState } from "react";
+import { modals } from "@mantine/modals";
+import { useCallback, useState } from "react";
+import AddTicketForm from "./components/AddTicketForm";
 import TicketsView from "./components/TicketView";
-import { TicketStatus } from "./configs";
+import { PushTicketForm, TicketStatus } from "./configs";
 
 export default function Tickets() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     const data = await getTickets();
     setTickets(data || []);
     setLoading(false);
-  };
+  }, []);
   useMount(fetchData);
 
   const filteredTickets = tickets.filter((ticket) => {
@@ -29,12 +32,37 @@ export default function Tickets() {
     }
   });
 
+  const handleAddTicket = useCallback(
+    async (values: PushTicketForm) => {
+      setLoading(true);
+      await createTicket(values.description);
+      await fetchData();
+      modals.closeAll();
+      setLoading(false);
+      pushNotification({
+        type: NotificationType.SUCCESS,
+        message: "Ticket created successfully",
+      });
+    },
+    [fetchData]
+  );
+
+  const handleAddTicketClick = useCallback(() => {
+    modals.open({
+      title: "Add Ticket",
+      centered: true,
+      size: "md",
+      children: <AddTicketForm onSubmit={handleAddTicket} />,
+    });
+  }, [handleAddTicket]);
+
   return (
     <TicketsView
       tickets={filteredTickets}
       loading={loading}
       status={statusFilter}
       setStatus={setStatusFilter}
+      onAddTicketClick={handleAddTicketClick}
     />
   );
 }

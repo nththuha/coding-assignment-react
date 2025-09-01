@@ -54,17 +54,21 @@ export default function TicketItem({ ticket }: TicketItemProps) {
           {ticket.description}
         </Text>
 
-        {ticket.assigneeId && (
-          <Flex gap={6} align="center" c="dimmed">
-            <IconUser size={20} stroke={1.5} />
-            <Text fz={14}>
-              Assigned to:{" "}
-              <Text span c="black" fw={500}>
-                {users.get(ticket.assigneeId)?.name || ""}
-              </Text>
-            </Text>
-          </Flex>
-        )}
+        <Flex gap={6} align="center" c="dimmed">
+          <IconUser size={20} stroke={1.5} />
+          <Text fz={14} mt={1}>
+            {ticket.assigneeId ? (
+              <>
+                Assigned to:{" "}
+                <Text span c="black" fw={500}>
+                  {users.get(ticket.assigneeId)?.name || ""}
+                </Text>
+              </>
+            ) : (
+              "Unassigned"
+            )}
+          </Text>
+        </Flex>
       </Stack>
     </Card>
   );
