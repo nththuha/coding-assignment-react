@@ -18,14 +18,7 @@ const App = () => {
       const data = await fetch("/api/tickets").then();
       setTickets(await data.json());
     }
-
-    // async function fetchUsers() {
-    //   const data = await fetch('/api/users').then();
-    //   setUsers(await data.json());
-    // }
-
     fetchTickets();
-    // fetchUsers();
   }, []);
 
   return (
