@@ -8,6 +8,8 @@
     "lint": "nx run-many --target=lint --projects=server,client"
   },
   "dependencies": {
+    "@mantine/core": "^8.2.8",
+    "@mantine/hooks": "^8.2.8",
     "@nestjs/common": "9.2.1",
     "@nestjs/core": "9.2.1",
     "@nestjs/platform-express": "9.2.1",
