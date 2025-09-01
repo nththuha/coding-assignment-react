@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import { Ticket } from "@acme/shared-models";
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import styles from "@/app.module.css";
 import Tickets from "@/components/tickets/tickets";
+import { resolver, theme } from "@/configs/themes";
+import { MantineProvider } from "@mantine/core";
 
 const App = () => {
   const [tickets, setTickets] = useState([] as Ticket[]);
@@ -27,14 +29,16 @@ const App = () => {
   }, []);
 
   return (
-    <div className={styles["app"]}>
-      <h1>Ticketing App</h1>
-      <Routes>
-        <Route path="/" element={<Tickets tickets={tickets} />} />
-        {/* Hint: Try `npx nx g component TicketDetails --project=client --no-export` to generate this component  */}
-        <Route path="/:id" element={<h2>Details Not Implemented</h2>} />
-      </Routes>
-    </div>
+    <MantineProvider theme={theme} cssVariablesResolver={resolver}>
+      <div className={styles["app"]}>
+        <h1>Ticketing App</h1>
+        <Routes>
+          <Route path="/" element={<Tickets tickets={tickets} />} />
+          {/* Hint: Try `npx nx g component TicketDetails --project=client --no-export` to generate this component  */}
+          <Route path="/:id" element={<h2>Details Not Implemented</h2>} />
+        </Routes>
+      </div>
+    </MantineProvider>
   );
 };
 
