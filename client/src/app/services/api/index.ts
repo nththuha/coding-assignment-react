@@ -16,6 +16,11 @@ export async function request<T>(
 ): Promise<T | null> {
   try {
     const res = await api.request<T>({ method, url, data, ...config });
+
+    if (res.status === 204) {
+      return null;
+    }
+
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
