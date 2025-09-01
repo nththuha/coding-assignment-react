@@ -1,4 +1,4 @@
-import { Select } from "@mantine/core";
+import Select from "@/components/Select";
 import { filterOptions } from "../configs";
 
 export type FilterProps = {
