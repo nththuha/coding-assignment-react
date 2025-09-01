@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Ticket } from "@acme/shared-models";
 
-import styles from "./app.module.css";
-import Tickets from "./tickets/tickets";
+import styles from "@/app.module.css";
+import Tickets from "@/components/tickets/tickets";
 
 const App = () => {
   const [tickets, setTickets] = useState([] as Ticket[]);
