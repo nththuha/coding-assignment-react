@@ -43,7 +43,9 @@
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
-    ]
+    ],
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-no-undef": "off"
   },
   "settings": {
     "react": {

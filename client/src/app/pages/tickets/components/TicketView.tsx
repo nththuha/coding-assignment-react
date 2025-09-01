@@ -1,0 +1,27 @@
+import Title from "@/components/Title";
+import Wrapper from "@/layout";
+import { Ticket } from "@acme/shared-models";
+import Filter from "./Filter";
+import TicketList from "./TicketList";
+
+type TicketsViewProps = {
+  tickets: Ticket[];
+  loading: boolean;
+  status: string | null;
+  setStatus: (value: string | null) => void;
+};
+
+export default function TicketsView({
+  tickets,
+  loading,
+  status,
+  setStatus,
+}: TicketsViewProps) {
+  return (
+    <Wrapper>
+      <Title content="Tickets" />
+      <Filter status={status} setStatus={setStatus} />
+      <TicketList tickets={tickets} loading={loading} />
+    </Wrapper>
+  );
+}
