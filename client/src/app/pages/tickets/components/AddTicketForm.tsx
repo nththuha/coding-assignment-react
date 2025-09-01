@@ -1,4 +1,4 @@
-import { Box, Button, LoadingOverlay, Stack, TextInput } from "@mantine/core";
+import { Box, Button, LoadingOverlay, Stack, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
 import { useState } from "react";
@@ -34,10 +34,12 @@ export default function AddTicketForm({ onSubmit }: AddTicketFormProps) {
       />
 
       <form onSubmit={form.onSubmit(submit)}>
-        <Stack gap={25} w="100%">
-          <TextInput
+        <Stack gap={15} w="100%">
+          <Textarea
             label="Description"
             withAsterisk
+            autosize
+            minRows={3}
             {...form.getInputProps("description")}
           />
 
