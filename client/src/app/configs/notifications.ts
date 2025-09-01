@@ -6,7 +6,7 @@ export enum NotificationType {
   ERROR = "ERROR",
 }
 
-export const ONE_SECOND = 10 * 1000;
+export const ONE_SECOND = 1000;
 
 const typeStyles: Record<
   NotificationType,
