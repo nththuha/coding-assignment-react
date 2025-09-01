@@ -1,20 +1,14 @@
 import { Button, Flex, Title as MantineTitle } from "@mantine/core";
 
 type TitleProps = {
-  content: string;
-  buttonText: string;
   onButtonClick: () => void;
 };
 
-export default function Title({
-  content,
-  buttonText,
-  onButtonClick,
-}: TitleProps) {
+export default function Title({ onButtonClick }: TitleProps) {
   return (
     <Flex justify="space-between" align="center">
-      <MantineTitle order={1}>{content}</MantineTitle>
-      <Button onClick={onButtonClick}>{buttonText}</Button>
+      <MantineTitle order={1}>Tickets</MantineTitle>
+      <Button onClick={onButtonClick}>Add Ticket</Button>
     </Flex>
   );
 }

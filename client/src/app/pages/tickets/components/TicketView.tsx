@@ -21,11 +21,7 @@ export default function TicketsView({
 }: TicketsViewProps) {
   return (
     <Wrapper>
-      <Title
-        content="Tickets"
-        buttonText="Add Ticket"
-        onButtonClick={onAddTicketClick}
-      />
+      <Title onButtonClick={onAddTicketClick} />
       <Filter status={status} setStatus={setStatus} />
       <TicketList tickets={tickets} loading={loading} />
     </Wrapper>
