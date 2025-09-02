@@ -43,9 +43,7 @@ const EmptyBox = ({ noResultText }: { noResultText?: string }) => {
           </g>
         </g>
       </svg>
-      <Box mt={5}>
-        {noResultText || "No results found. Please try another search"}
-      </Box>
+      <Box mt={5}>{noResultText || "No results found"}</Box>
     </Box>
   );
 };
