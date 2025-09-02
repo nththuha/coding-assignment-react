@@ -1,3 +1,4 @@
+import { NotificationType, pushNotification } from "@/configs/notifications";
 import axios, { Method } from "axios";
 import logger from "../logger";
 
@@ -29,9 +30,20 @@ export async function request<T>({
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      logger.error(`[api-error] - ${method} - ${url}: ${error.response}`);
+      const status = error.response?.status;
+      logger.error(`[api-error] - ${method} - ${url}: ${status}`);
+      pushNotification({
+        type: NotificationType.ERROR,
+        message: `Request failed (${method} ${url}) with status ${
+          status || "unknown"
+        }`,
+      });
     } else {
       logger.error(`[unexpected-error] - ${method} - ${url}: ${error}`);
+      pushNotification({
+        type: NotificationType.ERROR,
+        message: "Something went wrong. Please try again.",
+      });
     }
     return null;
   }
