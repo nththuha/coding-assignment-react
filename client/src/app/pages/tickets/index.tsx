@@ -1,4 +1,4 @@
-import { NotificationType, pushNotification } from "@/configs/notifications";
+import { pushNotification } from "@/configs/notifications";
 import useMount from "@/hooks/useMount";
 import { createTicket, getTickets } from "@/services/domain";
 import { Ticket } from "@acme/shared-models";
@@ -37,10 +37,7 @@ export default function Tickets() {
       await createTicket(values.description);
       modals.closeAll();
       await fetchData();
-      pushNotification({
-        type: NotificationType.SUCCESS,
-        message: "Ticket created successfully",
-      });
+      pushNotification({ message: "Ticket created successfully" });
     },
     [fetchData]
   );

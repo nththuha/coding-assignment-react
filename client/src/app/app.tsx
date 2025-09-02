@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <MantineProvider theme={theme} cssVariablesResolver={resolver}>
-      <Notifications position="top-right" />
+      <Notifications position="top-right" w={300} />
       <ModalsProvider>
         <AppRoutes />
       </ModalsProvider>

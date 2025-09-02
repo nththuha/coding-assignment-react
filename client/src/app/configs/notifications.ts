@@ -2,7 +2,6 @@ import { notifications } from "@mantine/notifications";
 
 export enum NotificationType {
   SUCCESS = "SUCCESS",
-  WARNING = "WARNING",
   ERROR = "ERROR",
 }
 
@@ -15,9 +14,6 @@ const typeStyles: Record<
   SUCCESS: {
     color: "var(--success)",
     defaultMessage: "Your changes have been saved",
-  },
-  WARNING: {
-    color: "var(--warning)",
   },
   ERROR: {
     color: "var(--error)",
