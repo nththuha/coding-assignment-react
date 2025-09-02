@@ -1,5 +1,11 @@
-import axios, { AxiosRequestConfig, Method } from "axios";
+import axios, { Method } from "axios";
 import logger from "../logger";
+
+type RequestProps = {
+  method: Method;
+  url: string;
+  data?: Record<string, unknown>;
+};
 
 const api = axios.create({
   baseURL: "/api",
@@ -8,14 +14,13 @@ const api = axios.create({
   },
 });
 
-export async function request<T>(
-  method: Method,
-  url: string,
-  data?: unknown,
-  config?: AxiosRequestConfig
-): Promise<T | null> {
+export async function request<T>({
+  method,
+  url,
+  data,
+}: RequestProps): Promise<T | null> {
   try {
-    const res = await api.request<T>({ method, url, data, ...config });
+    const res = await api.request<T>({ method, url, data });
 
     if (res.status === 204) {
       return null;
