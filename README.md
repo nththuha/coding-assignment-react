@@ -14,6 +14,14 @@
   - Navigate to ticket details screen
   - Added 3 tests for each screen (ticket list & ticket detail)
 
+## Screenshots
+### Ticket List
+<img width="1512" height="857" alt="image" src="https://github.com/user-attachments/assets/690ff132-36cb-4199-95b6-5cc6c3892b7a" />
+
+
+### Ticket Detail
+<img width="1512" height="857" alt="image" src="https://github.com/user-attachments/assets/3ed0239a-1783-407e-9c3f-3cfa749ee75c" />
+
 ---
 
 # Coding assignment
