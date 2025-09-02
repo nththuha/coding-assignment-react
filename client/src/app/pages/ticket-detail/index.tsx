@@ -29,6 +29,7 @@ export default function TicketDetail() {
       if (!ticket) {
         return;
       }
+      setLoading(true);
       if (!userId) {
         await unassignUserFromTicket(ticket.id);
       } else {
@@ -44,6 +45,7 @@ export default function TicketDetail() {
       if (!ticket) {
         return;
       }
+      setLoading(true);
       if (isComplete) {
         await markTicketAsComplete(ticket.id);
       } else {
