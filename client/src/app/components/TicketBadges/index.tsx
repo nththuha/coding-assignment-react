@@ -1,6 +1,6 @@
 import { Ticket } from "@acme/shared-models";
 import { Badge, Flex, MantineSize } from "@mantine/core";
-import { IconCheck, IconX } from "@tabler/icons-react";
+import { IconCheck, IconHourglassEmpty } from "@tabler/icons-react";
 
 type TicketBadgesProps = {
   ticket: Ticket | null;
@@ -22,7 +22,11 @@ export default function TicketBadges({ ticket, size }: TicketBadgesProps) {
           isCompleted ? "var(--completed-status)" : "var(--incomplete-status)"
         }
         leftSection={
-          isCompleted ? <IconCheck size={16} /> : <IconX size={16} />
+          isCompleted ? (
+            <IconCheck size={16} />
+          ) : (
+            <IconHourglassEmpty size={16} />
+          )
         }
       >
         {isCompleted ? "Completed" : "Incomplete"}

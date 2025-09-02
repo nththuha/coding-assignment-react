@@ -3,7 +3,7 @@ import TicketBadges from "@/components/TicketBadges";
 import useUserStore from "@/store/user.store";
 import { Ticket } from "@acme/shared-models";
 import { Button, Card, Divider, Stack, Text } from "@mantine/core";
-import { IconCheck, IconX } from "@tabler/icons-react";
+import { IconCheck, IconHourglassEmpty } from "@tabler/icons-react";
 import { useMemo } from "react";
 
 type TicketInfoCardProps = {
@@ -50,9 +50,15 @@ export default function TicketInfoCard({
 
         <Button
           leftSection={
-            isCompleted ? <IconX size={16} /> : <IconCheck size={16} />
+            isCompleted ? (
+              <IconHourglassEmpty size={16} />
+            ) : (
+              <IconCheck size={16} />
+            )
           }
-          color={isCompleted ? "var(--error)" : "var(--success)"}
+          color={
+            isCompleted ? "var(--incomplete-status)" : "var(--completed-status)"
+          }
           mt={8}
           onClick={() => onCompleteTicket(!isCompleted)}
         >
