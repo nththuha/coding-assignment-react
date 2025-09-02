@@ -29,13 +29,9 @@ export async function request<T>({
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      logger.error(
-        `API Error: ${method} ${url}`,
-        error.response?.status,
-        error.response?.data || error.message
-      );
+      logger.error(`[api-error] - ${method} - ${url}: ${error.response}`);
     } else {
-      logger.error(`Unexpected Error: ${method} ${url}`, error);
+      logger.error(`[unexpected-error] - ${method} - ${url}: ${error}`);
     }
     return null;
   }
