@@ -22,7 +22,6 @@ export default function AddTicketForm({ onSubmit }: AddTicketFormProps) {
   const submit = async (values: PushTicketForm) => {
     setLoading(true);
     onSubmit(values);
-    setLoading(false);
   };
 
   return (
@@ -43,7 +42,7 @@ export default function AddTicketForm({ onSubmit }: AddTicketFormProps) {
             {...form.getInputProps("description")}
           />
 
-          <Button mt={10} type="submit">
+          <Button mt={10} type="submit" disabled={loading}>
             Create
           </Button>
         </Stack>
