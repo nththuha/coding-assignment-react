@@ -1,3 +1,21 @@
+# Submission Notes
+
+- **Time spent:**
+
+  - Sept 1, 2025 → ~8 hours
+  - Sept 2, 2025 → ~4 hours
+
+- **Completed features:**
+  - Display ticket list
+  - Add new ticket
+  - Filter tickets by status
+  - Assign / Unassign ticket
+  - Mark ticket as Completed / Incomplete
+  - Navigate to ticket details screen
+  - Added 3 tests for each screen (ticket list & ticket detail)
+
+---
+
 # Coding assignment
 
 The goal of this assignment is to showcase your ability to develop features and your coding style. Due to the time
