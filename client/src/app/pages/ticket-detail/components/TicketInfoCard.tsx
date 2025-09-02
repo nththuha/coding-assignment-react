@@ -42,7 +42,7 @@ export default function TicketInfoCard({
         </Stack>
 
         <Select
-          label="Assignee to"
+          label="Assigned to"
           value={ticket?.assigneeId?.toString()}
           options={userOptions}
           onChange={onAssignUserToTicket}

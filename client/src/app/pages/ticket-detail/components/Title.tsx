@@ -1,4 +1,4 @@
-import { ActionIcon, Flex } from "@mantine/core";
+import { ActionIcon, Flex, Text } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,7 @@ export default function Title() {
   const navigate = useNavigate();
 
   return (
-    <Flex align="center" w="100%" mb="md" style={{ position: "relative" }}>
+    <Flex align="center" w="100%" style={{ position: "relative" }}>
       <ActionIcon
         variant="transparent"
         onClick={() => navigate("/")}
@@ -16,7 +16,9 @@ export default function Title() {
         <IconArrowLeft stroke={1.5} />
       </ActionIcon>
 
-      <h1
+      <Text
+        fz={24}
+        fw="bold"
         style={{
           margin: 0,
           position: "absolute",
@@ -26,7 +28,7 @@ export default function Title() {
         }}
       >
         Ticket Detail
-      </h1>
+      </Text>
     </Flex>
   );
 }

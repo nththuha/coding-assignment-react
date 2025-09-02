@@ -43,11 +43,11 @@ export default function TicketItem({ ticket }: TicketItemProps) {
 
         <Flex gap={6} align="center" c="dimmed">
           <IconUser size={20} stroke={1.5} />
-          <Text fz={14} mt={1}>
+          <Text fz={12} mt={1}>
             {ticket.assigneeId ? (
               <>
                 Assigned to:{" "}
-                <Text span c="black" fw={500}>
+                <Text span c="black" fw={500} fz={16}>
                   {users.get(ticket.assigneeId)?.name || ""}
                 </Text>
               </>
